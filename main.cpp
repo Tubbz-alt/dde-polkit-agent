@@ -42,9 +42,11 @@ int main(int argc, char *argv[])
     DApplication::loadDXcbPlugin();
     DApplication a(argc, argv);
     DApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    a.loadTranslator();
+
     a.setOrganizationName("deepin");
     a.setApplicationName(APP_NAME);
-    a.setApplicationDisplayName(APP_DISPLAY_NAME);
+    a.setApplicationDisplayName(QObject::tr("Polkit Agent"));
     a.setApplicationVersion("0.1");
     a.setQuitOnLastWindowClosed(false);
 
@@ -80,8 +82,6 @@ int main(int argc, char *argv[])
         out << getpid();
         PID.close();
     }
-
-    a.loadTranslator();
 
     return a.exec();
 }
